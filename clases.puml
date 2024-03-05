@@ -1,0 +1,50 @@
+@startuml
+!pragma layout smetana
+
+class Turistas{
+
+    string lenguaje
+    string tipoDeDocumento
+    string documento
+    string nombreCompleto
+    float edad
+    boolean condicionMedica
+    string telefono
+
+}
+
+class Actividad{
+
+    date fechaSalida
+    date fechaRegreso
+    seleccionable tipoActividad
+    list Turistas
+
+}
+
+
+Class Equipo{
+
+    int botas
+    int baston
+    int casco
+    int gatos
+    int arnes
+    int cuerdas
+    int mosquetones
+
+}
+
+
+Class Cuenta{
+
+    string correo
+    string contraseña
+
+}
+
+Cuenta *-- Turistas
+Cuenta *-- Actividad
+Turista *-- Actividad
+Actividad o-- Equipo
+@enduml

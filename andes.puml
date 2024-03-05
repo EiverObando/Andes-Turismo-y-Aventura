@@ -1,0 +1,31 @@
+@startuml
+
+!pragma layout smetana
+
+actor Cliente as cliente
+
+actor Soporte as soporte
+
+usecase (Ingresar correo y datos de ususario) as cuenta
+
+usecase (Selecionar historia) as seleccionarHistoria
+
+usecase (Seleccionar servicios: Hiking, Trekking, Escalada, Ciclomontañismo, Rappel, Avistamiento Aves) as seleccionarServicios
+
+usecase (seleccionar ubicación) as seleccionarUbicación
+
+usecase (Selecionar como lo hacemos?) as seleccionarComoLoHacemos
+
+usecase (Seleccionar chat virtual) as seleccionarChatVirtual
+
+
+
+cliente-right->cuenta
+cuenta-up->seleccionarHistoria
+cuenta-right->seleccionarServicios
+cuenta -down-> seleccionarComoLoHacemos
+cuenta -down-> seleccionarUbicación
+cuenta -up-> seleccionarChatVirtual
+seleccionarChatVirtual-up-> soporte
+
+@enduml
