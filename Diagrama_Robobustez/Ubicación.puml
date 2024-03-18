@@ -1,0 +1,31 @@
+@startuml
+
+Usuario as usuario
+
+/' boundary '/
+boundary "FE Ubicación'" as Ubicacion
+boundary "FE Error: selecione una ubicación" as errorUbicacion
+boundary "Obtener Fechas de salidas y de ingresos" as obtenerFechas
+
+/' control '/
+
+control "BE Obtener ubicaciones " as obtenerUbicaciones
+
+/' entity '/
+
+entity "Ubicaciones" as ubicacionesRegistradas
+entity "Mostrar fechas disponibles" as fechasDisponibles
+
+/' Usecase '/
+usecase (Seleccionar servicios: Hiking, Trekking, Escalada, Ciclomontañismo, Rappel, Avistamiento Aves) as seleccionarServicios
+
+
+usuario -> Ubicacion
+usuario -left-> obtenerFechas
+obtenerFechas -down-> fechasDisponibles
+fechasDisponibles -> seleccionarServicios
+Ubicacion -down-> obtenerUbicaciones
+obtenerUbicaciones -left-> ubicacionesRegistradas
+obtenerUbicaciones -right-> errorUbicacion
+obtenerUbicaciones -down-> seleccionarServicios: Validar
+@enduml

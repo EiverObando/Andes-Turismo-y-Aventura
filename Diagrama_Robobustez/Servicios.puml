@@ -1,0 +1,26 @@
+@startuml
+
+usuario as usuario
+
+/' boundary '/
+boundary "FE servicio'" as Feservicio
+boundary "FE Error: su correo o contraseña esta erroneo" as errorCorreo
+
+/' control '/
+
+control "BE Obtener usuarios registrados" as obtenerUsuarios
+
+/' entity '/
+
+entity "Usuarios Registrados" as usuariosRegistrados
+
+/' Usecase '/
+usecase (seleccionar ubicación) as seleccionarServicios
+
+
+usuario -> Feservicio
+login -down-> obtenerUsuarios
+obtenerUsuarios -left-> errorCorreo: Mostrar error
+usuariosRegistrados -left-> obtenerUsuarios
+obtenerUsuarios -down-> seleccionarServicios: Validar
+@enduml
